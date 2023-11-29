@@ -1,7 +1,7 @@
 import spacy
 from typing import Optional
 from enum import Enum
-import spacytextblob.spacytextblob
+import py.spacytextblob
 
 
 nlp: Optional[spacy.language.Language] = None
