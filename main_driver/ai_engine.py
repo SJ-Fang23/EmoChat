@@ -4,7 +4,7 @@ import time
 import openai
 
 # Set up: OpenAI API key
-api_key = "YOUR_API_KEY"  # Replace 'YOUR_API_KEY' with your actual API key
+api_key = "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"  # Replace 'YOUR_API_KEY' with your actual API key
 openai.api_key = api_key
 
 def _chatgpt_interface(chat_history):
