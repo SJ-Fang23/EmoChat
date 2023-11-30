@@ -1,5 +1,6 @@
 # Imports 
-from mock import misty_robot, get_sentiment, prompt_openAI, emote_behavior
+from ai_engine import prompt_openAI
+from mock import misty_robot, get_sentiment, emote_behavior
 import os 
 import time
 
@@ -9,6 +10,9 @@ def experimental_run():
     robot_intro = "Hi, I am Misty. I’m an experimental robot trying to learn more about humans and their daily activities. Tell me about something that’s been bothering you lately."
     print("\nMisty:", robot_intro)
     misty_robot.text_to_speech(robot_intro)
+
+    # Set up Chat History 
+    chat_history = [{"role": "system", f"content": {robot_intro}}]
 
     # Start Convo
     for i in range(4):
@@ -20,11 +24,11 @@ def experimental_run():
 
         # Get OpenAI Response
         response_type = "end" if i==3 else "follow_up"
-
-        openai_response = prompt_openAI(user_input,
-                            response_type=response_type,
-                            sentiment=sentiment
-                          )
+        openai_response, chat_history = prompt_openAI(user_input,
+                                            response_type=response_type,
+                                            sentiment=sentiment,
+                                            chat_history=chat_history
+                                        )
 
         # Robot Response
         emote_behavior(sentiment)
@@ -38,6 +42,9 @@ def control_run():
     print("\nMisty:", robot_intro)
     misty_robot.text_to_speech(robot_intro)
 
+    # Set up Chat History 
+    chat_history = [{"role": "system", f"content": {robot_intro}}]
+
     # Start Convo
     for i in range(4):
         # Get User Input
@@ -45,11 +52,11 @@ def control_run():
 
         # Get OpenAI Response
         response_type = "end" if i==3 else "follow_up"
-
-        openai_response = prompt_openAI(user_input,
-                            response_type=response_type,
-                            sentiment=None
-                          )
+        openai_response, chat_history = prompt_openAI(user_input,
+                                            response_type=response_type,
+                                            sentiment=None,
+                                            chat_history=chat_history
+                                        )
 
         # Robot Response
         emote_behavior(None)
