@@ -12,7 +12,7 @@ def experimental_run():
     misty_robot.text_to_speech(robot_intro)
 
     # Set up Chat History 
-    chat_history = [{"role": "system", f"content": {robot_intro}}]
+    chat_history = [{"role": "system", f"content": robot_intro}]
 
     # Start Convo
     for i in range(4):
@@ -43,7 +43,7 @@ def control_run():
     misty_robot.text_to_speech(robot_intro)
 
     # Set up Chat History 
-    chat_history = [{"role": "system", f"content": {robot_intro}}]
+    chat_history = [{"role": "system", f"content": robot_intro}]
 
     # Start Convo
     for i in range(4):
@@ -54,7 +54,7 @@ def control_run():
         response_type = "end" if i==3 else "follow_up"
         openai_response, chat_history = prompt_openAI(user_input,
                                             response_type=response_type,
-                                            sentiment=None,
+                                            sentiment="N/A",
                                             chat_history=chat_history
                                         )
 
@@ -78,6 +78,7 @@ if __name__ == "__main__":
     print("-------------------------\n")
     input("Press Enter to proceed to the next portion of this interaction.")  
     os.system("clear")
+    time.sleep(1)
 
     # Control Run 
     control_run() 

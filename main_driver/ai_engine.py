@@ -1,10 +1,9 @@
 # Mock Functions - for testing driver code
 import random
-import time
 import openai
 
 # Set up: OpenAI API key
-api_key = "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"  # Replace 'YOUR_API_KEY' with your actual API key
+api_key = "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"  # Replace 'YOUR_API_KEY' with your actual API key
 openai.api_key = api_key
 
 def _chatgpt_interface(chat_history):
@@ -18,10 +17,7 @@ def _chatgpt_interface(chat_history):
     # Return AI's response
     return response['choices'][0]['message']['content']
 
-def prompt_openAI(user_input, response_type="follow_up", sentiment=None, chat_history=[]): 
-    # Added in Pause for Natural Convo Flow 
-    time.sleep(0.75)
-
+def prompt_openAI(user_input, response_type="follow_up", sentiment="N/A", chat_history=[]): 
     # Engineer the Prompt
     message = ""
     if response_type == "follow_up":
@@ -32,6 +28,6 @@ def prompt_openAI(user_input, response_type="follow_up", sentiment=None, chat_hi
     
     # Get Chat GPT Response + Update Chat History 
     response = _chatgpt_interface(chat_history)
-    chat_history.append({"role": "system", f"content": {response}})
+    chat_history.append({"role": "system", f"content": response})
 
     return response, chat_history
