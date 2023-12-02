@@ -93,7 +93,7 @@ if __name__ == "__main__":
     print(" \n \n \n")
     print("-------------------------\n")
     print("The interaction is now over.")
-    print("Thanks for taking the time - please fill out the survey before leaving :)")
+    print("Thanks for taking the time - please fill out the survey before leaving :)\n")
     
       
 

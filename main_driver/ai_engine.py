@@ -3,7 +3,7 @@ import random
 import openai
 
 # Set up: OpenAI API key
-api_key = "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"  # Replace 'YOUR_API_KEY' with your actual API key
+api_key = "DUMMY KEY"  # Replace 'YOUR_API_KEY' with your actual API key
 openai.api_key = api_key
 
 def _chatgpt_interface(chat_history):
@@ -11,7 +11,7 @@ def _chatgpt_interface(chat_history):
                         model = "gpt-3.5-turbo",  # or another GPT-3 model you prefer
                         messages = chat_history,
                         temperature = 0.7, 
-                        max_tokens = 100
+                        max_tokens = 150
                     )
         
     # Return AI's response
