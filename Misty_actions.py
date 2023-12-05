@@ -5,6 +5,10 @@ import time
 import mistyPy_modified
 from matplotlib import colors
 
+# line up natural language actions with function name
+MISTY_HEAD_ACTIONS = {"nod":"nod", "shake head":"shakehead", "lower head":"lowerHead"}
+MISTY_ARM_ACTIONS = {"lift left arm":["lift_arm","left",0], "lift right arm":["right_arm","left",0]}
+
 class MistyActions():
     def __init__(self,ipAddress):
         # connnect to Misty with IP address
@@ -18,7 +22,7 @@ class MistyActions():
         image = 'e_' + expression + '.jpg'
         if image in self.facial_expressions:
             self.robot.changeImage(image)
-    def lift_arm(self, arm, position):
+    def lift_arm(self, arm, position=90):
         if arm in ["left", "right"]:
             if position in range(-360,360):
                 self.robot.moveArms(arm, position)
