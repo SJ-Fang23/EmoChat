@@ -13,6 +13,7 @@ from mock import misty_robot, emote_behavior
 
 import time
 import sys
+from transformers import pipeline
 
 # Flushes System Input Buffer 
 def flush_input():
@@ -60,6 +61,10 @@ def trial_run(run_type="experimental"):
 
 ### DRIVER --------------------------------------------- 
 if __name__ == "__main__":
+    # Preload model 
+    print("\n \n[ignore following messages]:")
+    pipeline(task="text-classification", model="SamLowe/roberta-base-go_emotions", top_k=None)
+
     # Clear Console 
     os.system("clear")
     print("\n \n")
