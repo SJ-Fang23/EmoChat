@@ -1,4 +1,4 @@
-from get_sentiment import get_sentiment
+from main_driver.get_sentiment import get_sentiment
 import sys
 import os
 

@@ -1,8 +1,16 @@
+print(".... wait for experiment to start")
+
+# Setup 
+import sys 
+import os 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
+
 # Imports 
 from ai_engine import prompt_openAI
 # from mock import prompt_openAI
+from get_emotion import get_emotion
 from mock import misty_robot, emote_behavior
-import os 
+
 import time
 import sys
 
@@ -20,7 +28,7 @@ def flush_input():
 def trial_run(run_type="experimental"): 
     # Robot Intro 
     robot_intro = "Hi, I am Misty. I’m an experimental robot trying to learn more about humans and their daily activities. Tell me about something that’s been bothering you lately."
-    print("\nMisty:", robot_intro)
+    print("Misty:", robot_intro)
     misty_robot.text_to_speech(robot_intro)
 
     # Set up Chat History 
@@ -35,7 +43,7 @@ def trial_run(run_type="experimental"):
         # Get User Sentiment (unless control run)
         sentiment = "N/A" 
         if run_type == "experimental":
-            sentiment = get_sentiment(user_input)
+            sentiment = get_emotion(user_input)
 
         # Get OpenAI Response
         response_type = "end" if i==3 else "follow_up"
@@ -54,6 +62,7 @@ def trial_run(run_type="experimental"):
 if __name__ == "__main__":
     # Clear Console 
     os.system("clear")
+    print("\n \n")
     time.sleep(1)
 
     # Experimental Run 
