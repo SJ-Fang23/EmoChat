@@ -46,7 +46,7 @@ def trial_run(run_type="experimental"):
                                         )
 
         # Robot Response
-        emote_behavior(sentiment)
+        emote_behavior(openai_response)
         print("\nMisty:", openai_response)
         misty_robot.text_to_speech(openai_response)
 
