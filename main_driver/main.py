@@ -1,7 +1,7 @@
 # Imports 
 from ai_engine import prompt_openAI
 # from mock import prompt_openAI
-from mock import misty_robot, get_sentiment, emote_behavior
+from mock import misty_robot, emote_behavior
 import os 
 import time
 import sys
@@ -62,9 +62,12 @@ if __name__ == "__main__":
     # Intermission 
     time.sleep(1)
     print("\n \n \n")
+    print("The first interaction is done now")
+    print("NOTE: Please fill out the survey before moving onto the next section.\n")
+    time.sleep(2)
     print("-------------------------\n")
     flush_input()
-    input("Press Enter to proceed to the next portion of this interaction ... ")  
+    input("Press Enter to proceed to the next portion of this interaction once you have finished the survey ... ")  
     os.system("clear")
     time.sleep(1)
 
@@ -82,7 +85,7 @@ if __name__ == "__main__":
     print(" \n \n \n")
     print("-------------------------\n")
     print("The interaction is now over.")
-    print("Thanks for taking the time - please fill out the survey before leaving :)\n")
+    print("Thanks for taking the time - please fill out the final survey before leaving :)\n")
     
       
 
