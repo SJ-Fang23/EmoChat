@@ -2,3 +2,4 @@ out.*
 .venv
 *.pyc
 1.0
+test.*
