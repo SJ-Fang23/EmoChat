@@ -106,7 +106,7 @@ class Robot:
         reply = resp.json()
         for out in reply["result"]:
             self.images_saved.append(out["name"])
-        print (self.images_saved)
+        # print (self.images_saved)
 
     # def populateAudio(self):
     #     self.audio_saved = []

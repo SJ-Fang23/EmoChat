@@ -9,11 +9,17 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 from ai_engine import prompt_openAI
 # from mock import prompt_openAI
 from get_emotion import get_emotion
-from mock import misty_robot, emote_behavior
+# from mock import misty_robot, emote_behavior
+from text_to_speech import text_to_speech
+from emote_behavior import emote_behavior
 
 import time
 import sys
 from transformers import pipeline
+
+from Misty_actions import MistyActions
+
+IP = "10.5.1.51"
 
 # Flushes System Input Buffer 
 def flush_input():
@@ -27,12 +33,14 @@ def flush_input():
 
 ### TRIAL RUN CODE --------------------------------------------- 
 def trial_run(run_type="experimental"): 
+    # connect to robot
+    robot = MistyActions(IP)
     # Robot Intro 
     robot_intro = "Hi, I am Misty. I’m an experimental robot trying to learn more about humans and their daily activities. Tell me about something that’s been bothering you lately."
     print("Misty:", robot_intro)
-    misty_robot.text_to_speech(robot_intro)
+    text_to_speech(robot_intro)
 
-    # Set up Chat History 
+    # Set up Chat History
     chat_history = [{"role": "system", f"content": robot_intro}]
 
     # Start Convo
@@ -55,12 +63,13 @@ def trial_run(run_type="experimental"):
                                         )
 
         # Robot Response
-        emote_behavior(movements)
+        emote_behavior(robot, movements)
         print("\nMisty:", openai_response)
-        misty_robot.text_to_speech(openai_response)
+        text_to_speech(openai_response)
 
 ### DRIVER --------------------------------------------- 
 if __name__ == "__main__":
+    # connect to robot
     # Preload model 
     print("\n \n[loading interaction]")
     pipeline(task="text-classification", model="SamLowe/roberta-base-go_emotions", top_k=None)
