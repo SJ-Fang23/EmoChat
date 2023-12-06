@@ -45,10 +45,10 @@ class Robot:
         else:
             print(file_name,"not found on the robot, use <robot_name>.printAudioList() to see the list of saved audio files")
 
-    def battery(self):
-        resp = requests.get('http://'+self.ip+'/api/info/battery')
-        for reply in resp.json():
-        	return (reply['result'])
+    # def battery(self):
+    #     resp = requests.get('http://'+self.ip+'/api/info/battery')
+    #     for reply in resp.json():
+    #     	return (reply['result'])
 
     def moveHead(self,roll,pitch,yaw,velocity=1):
         assert roll in range(-20,21) and pitch in range(-20,21) and yaw in range(-20,21), " moveHead: Roll, Pitch and Yaw needs to be in range -30 to +30"
@@ -106,7 +106,7 @@ class Robot:
         reply = resp.json()
         for out in reply["result"]:
             self.images_saved.append(out["name"])
-        # print (self.images_saved)
+        print (self.images_saved)
 
     # def populateAudio(self):
     #     self.audio_saved = []

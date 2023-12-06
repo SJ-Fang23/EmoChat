@@ -7,7 +7,7 @@ from matplotlib import colors
 
 # line up natural language actions with function name
 MISTY_HEAD_ACTIONS = {"nod":"nod", "shake head":"shakehead", "lower head":"lowerHead"}
-MISTY_ARM_ACTIONS = {"lift left arm":["lift_arm","left",0], "lift right arm":["right_arm","left",0]}
+MISTY_ARM_ACTIONS = {"lift left arm":["arm","left",0], "lift right arm":["arm","right",0]}
 
 class MistyActions():
     def __init__(self,ipAddress):
@@ -22,7 +22,7 @@ class MistyActions():
         image = 'e_' + expression + '.jpg'
         if image in self.facial_expressions:
             self.robot.changeImage(image)
-    def lift_arm(self, arm, position=90):
+    def arm(self, arm, position=90):
         if arm in ["left", "right"]:
             if position in range(-360,360):
                 self.robot.moveArms(arm, position)
@@ -43,10 +43,17 @@ class MistyActions():
         assert color in list(colors.cnames.keys()), "invalid colors!"
         rgb = colors.to_rgb(color)
         self.robot.changeLED(rgb[0],rgb[1],rgb[2])
+    
+    def joy_face(self):
+        self.robot.changeImage('e_{}.jpg'.format("Joy"))
+    def love_face(self):
+        self.robot.changeImage('e_Love.jpg')
 
-ip = "10.5.1.51"
-misty = MistyActions(ip)
-misty.nod()
+if __name__ == "__main__":
+    ip = "10.5.6.13"
+    misty = MistyActions(ip)
+    # misty.robot.populateImages()
+    misty.love_face()
 # misty.shakehead()
 # mia.changeLED(225,0,0)
 # mia.changeImage('e_Joy.jpg')
