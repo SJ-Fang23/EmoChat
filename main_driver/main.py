@@ -48,21 +48,21 @@ def trial_run(run_type="experimental"):
 
         # Get OpenAI Response
         response_type = "end" if i==3 else "follow_up"
-        openai_response, chat_history = prompt_openAI(user_input,
+        openai_response, movements, chat_history = prompt_openAI(user_input,
                                             response_type=response_type,
                                             sentiment=sentiment,
                                             chat_history=chat_history
                                         )
 
         # Robot Response
-        emote_behavior(openai_response)
+        emote_behavior(movements)
         print("\nMisty:", openai_response)
         misty_robot.text_to_speech(openai_response)
 
 ### DRIVER --------------------------------------------- 
 if __name__ == "__main__":
     # Preload model 
-    print("\n \n[ignore following messages]:")
+    print("\n \n[loading interaction]")
     pipeline(task="text-classification", model="SamLowe/roberta-base-go_emotions", top_k=None)
 
     # Clear Console 

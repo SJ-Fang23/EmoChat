@@ -14,9 +14,9 @@ def get_sentiment(user_input):
 def prompt_openAI(*args, **kwargs): 
     time.sleep(0.75)
     if kwargs["response_type"] == "follow_up":
-        return ("<dummy open ai response>. Tell me more about this.", None)
+        return ("<dummy open ai response>. Tell me more about this.", None, None)
     else: 
-        return ("<dummy open ai response>. Well thanks for talking to me today - it was nice to meet you! goodbye :)", None)
+        return ("<dummy open ai response>. Well thanks for talking to me today - it was nice to meet you! goodbye :)", None, None)
 
 def emote_behavior(sentiment): 
     return 
