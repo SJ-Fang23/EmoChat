@@ -83,6 +83,7 @@ if __name__ == "__main__":
     flush_input()
     input("Press Enter to proceed to the next portion of this interaction once you have finished the survey ... ")  
     os.system("clear")
+    print("\n \n")
     time.sleep(1)
 
     # Control Run 
