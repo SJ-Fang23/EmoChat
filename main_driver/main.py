@@ -19,7 +19,7 @@ from transformers import pipeline
 
 from Misty_actions import MistyActions
 
-IP = "10.5.1.51"
+IP = "10.5.6.13"
 
 # Flushes System Input Buffer 
 def flush_input():
