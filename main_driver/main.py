@@ -5,11 +5,12 @@ import sys
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
 
+# For Segmented Testing 
+# from mock import prompt_openAI, misty_robot, emote_behavior
+
 # Imports 
 from ai_engine import prompt_openAI
-# from mock import prompt_openAI
 from get_emotion import get_emotion
-# from mock import misty_robot, emote_behavior
 from text_to_speech import text_to_speech
 from emote_behavior import emote_behavior
 
